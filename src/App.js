@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 
+import SignIn from './components/SignIn/SignIn.js';
+
 export default function App() {
   return (
     <BrowserRouter>
-      APP
       <Routes>
-        {/* <Route path="/" element={<SignIn />} /> */}
+        <Route path="/" element={<SignIn />} />
         
         
-
 
       </Routes>    
     </BrowserRouter>   
