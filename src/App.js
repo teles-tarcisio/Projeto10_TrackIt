@@ -1,13 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React from 'react';
 
-import SignIn from './components/SignIn/SignIn.js';
+import SignUser from './components/SignUser/SignUser.js';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SignIn />} />
+        <Route path="/" element={<SignUser isNewUser={false} />} />
+
+        <Route path="/cadastro" element={<SignUser isNewUser={true} />} />
         
         
 
