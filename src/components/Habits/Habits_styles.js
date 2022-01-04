@@ -105,7 +105,7 @@ const SCRoundProgressBar = styled.div`
   }
 `;
 
-const SCNewHabit = styled.form`
+const SCNewHabitCard = styled.div`
   height: 180px;
   margin: 0 auto 30px auto;
   padding: 18px;
@@ -115,11 +115,41 @@ const SCNewHabit = styled.form`
   border-radius: 5px;
 `;
 
-const SCWeekdayButtons = styled.div`
-  display: flex;
-  margin: auto;
-
-
+const SCHabitName = styled.input`
+  width: 100%;
+  height: 45px;
+  border: 1px solid #D4D4D4;
+  border-radius: 5px;
+  font-size: 20px;
+  line-height: 25px;
+  color: #DBDBDB;
 `;
 
-export { SCHeader, SCFooter, SCRoundProgressBar, SCHabitsList, SCMainContainer, SCHabitsTopBar,SCSimpleButton, SCNewHabit, SCWeekdayButtons };
+const SCWeekButtons = styled.div`
+  display: flex;
+  margin: 8px auto 30px 0;
+`;
+
+const SCWeekdayButton = styled.button`
+  width: 30px;
+  height: 30px;
+  border: 1px solid #D4D4D4;
+  border-radius: 5px;
+  margin-right: 4px;
+  background-color: #FFFFFF;
+  font-size: 20px;
+  line-height: 25px;
+  color: #DBDBDB;
+`;
+
+const SCActionButtons = styled.div`
+  margin-left: auto;
+  & button {
+    width: 84px;
+    border: none;
+    font-size: 16px;
+    line-height: 20px;
+  }
+`;
+
+export { SCHeader, SCFooter, SCRoundProgressBar, SCHabitsList, SCMainContainer, SCHabitsTopBar,SCSimpleButton, SCNewHabitCard, SCHabitName, SCWeekButtons, SCWeekdayButton, SCActionButtons };

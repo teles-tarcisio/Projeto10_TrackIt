@@ -1,36 +1,28 @@
-import { SCNewHabit, SCWeekdayButtons } from "./Habits_styles.js";
+import { SCNewHabitCard, SCHabitName, SCWeekButtons, SCWeekdayButton, SCActionButtons } from "./Habits_styles.js";
+
 
 export default function NewHabit() {
   return (
-    <SCNewHabit>
-      <input required
+    <SCNewHabitCard>
+      <SCHabitName required
         type="text"
-        placeholder="nome do hábito" />
-      <SCWeekdayButtons>
-        <input type="button"
-          value="D"
-          name="sunday" />
-        <input type="button"
-          value="S"
-          name="monday" />
-        <input type="button"
-          value="T"
-          name="tuesday" />
-        <input type="button"
-          value="Q"
-          name="wednesday" />
-        <input type="button"
-          value="Q"
-          name="thursday" />
-        <input type="button"
-          value="S"
-          name="friday" />
-        <input type="button"
-          value="S"
-          name="saturday" />
-      </SCWeekdayButtons>
+        placeholder=" nome do hábito" />
+      <SCWeekButtons>
+        <SCWeekdayButton name="1" onClick={(e) => console.log(e.target.name)}>D</SCWeekdayButton>
 
-    </SCNewHabit>
+        <SCWeekdayButton name="2">S</SCWeekdayButton>
+        <SCWeekdayButton name="3">T</SCWeekdayButton>
+        <SCWeekdayButton name="4">Q</SCWeekdayButton>
+        <SCWeekdayButton name="5">Q</SCWeekdayButton>
+        <SCWeekdayButton name="6">S</SCWeekdayButton>
+        <SCWeekdayButton name="7">S</SCWeekdayButton>
+      </SCWeekButtons>
+
+      <SCActionButtons>
+        <SCWeekdayButton>Cancelar</SCWeekdayButton>
+        <SCWeekdayButton>Salvar</SCWeekdayButton>
+      </SCActionButtons>
+
+    </SCNewHabitCard>
   );
 }
-
