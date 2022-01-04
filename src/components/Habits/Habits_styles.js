@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SCHeader = styled.header`
   width: 100%;
   height: 70px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -27,9 +27,8 @@ const SCHeader = styled.header`
 `;
 
 const SCMainContainer = styled.div`
-  width: 100%;
-  height: calc(100% - 140px);
-  margin: 92px auto;
+  width: 100vw;
+  margin: 92px auto auto auto;
   display: flex;
   flex-direction: column;
 `;
@@ -64,9 +63,8 @@ const SCSimpleButton = styled.button`
 `;
 
 const SCHabitsList = styled.ul`
-  margin: 22px 18px auto 18px;
+  margin: 22px 18px 10px 18px;
   border-radius: 5px;
-  border: 2px dashed;
   & p {
     font-size: 18px;
     line-height: 23px;
@@ -74,23 +72,13 @@ const SCHabitsList = styled.ul`
   }
 `;
 
-const SCNewHabit = styled.li`
-  height: 180px;
-  margin: 0 auto 30px auto;
-  background-color: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-`;
-
 const SCFooter = styled.footer`
   width: 100%;
   height: 70px;
-  position: absolute;
-  left: 0;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  margin: auto auto auto 0;
   background-color: #FFFFFF;
   display: flex;
   align-items: center;
@@ -117,4 +105,21 @@ const SCRoundProgressBar = styled.div`
   }
 `;
 
-export { SCHeader, SCFooter, SCRoundProgressBar, SCHabitsList, SCMainContainer, SCHabitsTopBar,SCSimpleButton, SCNewHabit};
+const SCNewHabit = styled.form`
+  height: 180px;
+  margin: 0 auto 30px auto;
+  padding: 18px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+`;
+
+const SCWeekdayButtons = styled.div`
+  display: flex;
+  margin: auto;
+
+
+`;
+
+export { SCHeader, SCFooter, SCRoundProgressBar, SCHabitsList, SCMainContainer, SCHabitsTopBar,SCSimpleButton, SCNewHabit, SCWeekdayButtons };

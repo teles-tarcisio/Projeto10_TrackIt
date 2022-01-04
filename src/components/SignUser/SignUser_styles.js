@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
 const SCContainer = styled.div`
-  width: 100%;
-  margin: 68px auto 200px auto;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background-color: #FFFFFF;
 `;
 
 const SCLogo = styled.img`
-  margin: 0 98px 32px 98px;
+  margin: 68px auto 32px auto;
   width: 180px;
   height: 180px;
 ` ;
@@ -18,7 +20,7 @@ const SCLogo = styled.img`
 const SCLogin = styled.form`
   width: 303px;
   height: 90%;
-  margin: 0 36px 200px 36px;
+  margin: 0 auto auto auto;
   display: flex;
   flex-direction: column;
 `;

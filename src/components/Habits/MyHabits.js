@@ -1,4 +1,6 @@
-import { SCHabitsList, SCMainContainer, SCHabitsTopBar, SCSimpleButton, SCNewHabit } from "./Habits_styles.js";
+import NewHabit from './NewHabit.js';
+import { SCHabitsList, SCMainContainer, SCHabitsTopBar, SCSimpleButton, } from "./Habits_styles.js";
+
 
 export default function MyHabits() {
   return (
@@ -13,8 +15,7 @@ export default function MyHabits() {
       </SCHabitsTopBar>
 
       <SCHabitsList>
-        <SCNewHabit />
-        <SCNewHabit />
+        <NewHabit />
         <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
       </SCHabitsList>
     </SCMainContainer>
