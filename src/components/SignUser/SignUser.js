@@ -39,7 +39,6 @@ export default function SignUser({isNewUser}) {
       <SCLogo src={TrackItLogo} />
 
       <UserForm isNewUser={isNewUser} />
-
     </SCContainer>
   );
 }
