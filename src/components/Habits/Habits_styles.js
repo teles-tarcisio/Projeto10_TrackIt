@@ -105,6 +105,16 @@ const SCRoundProgressBar = styled.div`
   }
 `;
 
+const SCHabitCard = styled.li`
+  height: 91px;
+  margin: 0 auto 10px auto;
+  padding: 12px 12px 15px 15px;
+  display: flex;
+  background-color: #FFFFFF;
+  border-radius: 5px;;
+
+`;
+
 const SCNewHabitCard = styled.div`
   height: 180px;
   margin: 0 auto 30px auto;
@@ -152,4 +162,4 @@ const SCActionButtons = styled.div`
   }
 `;
 
-export { SCHeader, SCFooter, SCRoundProgressBar, SCHabitsList, SCMainContainer, SCHabitsTopBar,SCSimpleButton, SCNewHabitCard, SCHabitName, SCWeekButtons, SCWeekdayButton, SCActionButtons };
+export { SCHeader, SCFooter, SCRoundProgressBar, SCHabitsList, SCMainContainer, SCHabitsTopBar, SCSimpleButton, SCHabitCard, SCNewHabitCard, SCHabitName, SCWeekButtons, SCWeekdayButton, SCActionButtons };
