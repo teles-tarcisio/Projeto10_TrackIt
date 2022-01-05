@@ -1,9 +1,24 @@
 import { Link } from 'react-router-dom';
 
+import { registerNewUser } from '../../services/apiTrackIt.js';
+
 import TrackItLogo from '../../assets/imgs/TrackIt_logo.png';
 import { SCLogo, SCContainer, SCLogin, SCInput, SCWideButton, SCButton } from './SignUser_styles.js';
 
+const newUserData = {
+  email: "004@mail.com",
+  name: "user001",
+  image: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png",
+  password: "001"
+};
+
+
 function UserForm({isNewUser}) {
+
+  function testNewUser() {
+    return registerNewUser(newUserData); 
+  };
+
   return (
     <SCLogin>
         <SCInput required type="text" placeholder="email" />
@@ -13,8 +28,9 @@ function UserForm({isNewUser}) {
         {isNewUser && <SCInput required type="url" placeholder="foto" /> }
         
         <SCWideButton>
-          <SCButton type="submit">
-            {isNewUser ? <p>Cadastrar</p> : <p>Entrar</p>}
+          {/* <SCButton type="submit"> */}
+          <SCButton type="button" onClick={() => console.log(testNewUser())}>
+            {isNewUser ? <p>testCadastrar</p> : <p>testEntrar</p>}
           </SCButton>
         </SCWideButton>
         <SCWideButton>
@@ -32,6 +48,7 @@ function UserForm({isNewUser}) {
     </SCLogin>
   );
 }
+
 
 export default function SignUser({isNewUser}) {
   return (
