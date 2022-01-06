@@ -1,10 +1,10 @@
-import NewHabit from './NewHabit.js';
+//import NewHabit from './NewHabit.js';
 import { SCHabitsList, SCMainContainer, SCHabitsTopBar, SCSimpleButton, SCHabitCard } from "./Habits_styles.js";
 
 const habitsArray = [
   {
     name: "nome do hábito 01",
-    weekdays: [7, 1]
+    weekdays: [7, 1] 
   },
   {
     name: "Nome do hábito 02",
