@@ -17,17 +17,17 @@ export default function App() {
     }
   );
 
-  
+
   return (
     <BrowserRouter>
       <LoggedUserContext.Provider value={{ loggedUser, setLoggedUser }} >
         <Routes>
           <Route path="/"
-            element={<SignUser isNewUser={false} />}
+            element={<SignIn />}
           />
 
           <Route path="/cadastro"
-            element={<SignUser isNewUser={true} />}
+            element={<SignUp />}
           />
 
           <Route path="/habitos"

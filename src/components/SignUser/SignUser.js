@@ -1,29 +1,36 @@
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
-//import { registerNewUser } from '../../services/apiTrackIt.js';
 import { LoggedUserContext } from '../../contexts/contexts.js';
 
 import TrackItLogo from '../../assets/imgs/TrackIt_logo.png';
 import { SCLogo, SCContainer, SCLogin, SCInput, SCWideButton, SCButton } from './SignUser_styles.js';
 
+const API_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit";
 
 function UserForm({ isNewUser }) {
-  //const { loggedUser, setLoggedUser } = useContext(LoggedUserContext);
+  const { loggedUser, setLoggedUser } = useContext(LoggedUserContext);
   const [localData, setLocalData] = useState({email: "", name: "", image: "", password: "" });
 
-  function signNewUser(event) {
+  function submitUserData(event) {
     event.preventDefault();
-    console.log('submit :', localData);
-  };
+
+    const signUpPromise = axios.post(`${API_URL}/auth/sign-up`, localData);
+    signUpPromise.then( response => {
+      return response.data;
+    });
+    signUpPromise.catch(error => {
+      console.log('erro signup: ', error.response);
+    });
+  }
 
   function updateLocalData(newData, field) {
     setLocalData({...localData, [`${field}`]: newData});
   };
 
-  console.log(localData);
   return (
-    <SCLogin onSubmit={signNewUser}>
+    <SCLogin onSubmit={submitUserData}>
       <SCInput required type="email" placeholder="email"
         value={localData.email}
         onChange={(event) => updateLocalData(event.target.value, 'email')}
