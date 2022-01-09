@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import { LoggedUserContext } from './contexts/contexts.js';
 
+import SignIn from './components/SignUser/SignIn.js';
 import SignUp from './components/SignUser/SignUp.js';
 import Habits from './components/Habits/Habits.js';
 
@@ -24,7 +25,7 @@ export default function App() {
         {console.log('no App.js: ', loggedUser)}
         <Routes>
           <Route path="/"
-            // element={<SignIn />}
+            element={<SignIn />}
           />
 
           <Route path="/cadastro"

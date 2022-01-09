@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
 
 import { LoggedUserContext } from '../../contexts/contexts.js';
@@ -12,6 +12,7 @@ const SIGNUP_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/a
 
 export default function SignUp() {
   const { loggedUser, setLoggedUser } = useContext(LoggedUserContext);
+  const navigate = useNavigate();
   const [localData, setLocalData] = useState({ email: "", name: "", image: "", password: "" });
 
   function signUpUser(event) {
@@ -19,9 +20,9 @@ export default function SignUp() {
 
     const signUpPromise = axios.post(SIGNUP_URL, localData);
     signUpPromise.then( response => {
-      alert('cadastrado com sucesso, redirecionar para rota "/" ');
-      console.log('cadastrado com sucesso', response);
       setLoggedUser({...loggedUser, id:response.data.id, name:response.data.name, email:response.data.email});
+      alert('Cadastro efetuado com sucesso! Por favor faça login');
+      navigate('/');
     });
     signUpPromise.catch(error => {
       alert("Erro ao efetuar cadastro, VERIFICAR!");
