@@ -27,7 +27,8 @@ export default function SignIn() {
         email: response.data.email,
         image: response.data.image,
         token: response.data.token });
-      alert(`Seja bem vindo(a) ${loggedUser.name}!`);
+      alert(`Seja bem vindo(a) ${response.data.name}!`);
+      localStorage.setItem("userToken", response.data.token);
       navigate('/hoje');
     });
     signInPromise.catch(error => {

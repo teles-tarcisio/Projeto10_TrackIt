@@ -27,7 +27,6 @@ export default function App() {
     <BrowserRouter>
       <LoggedUserContext.Provider value={{ loggedUser, setLoggedUser }} >
         <HabitsContext.Provider value={{ userHabits, setUserHabits }} >
-          {console.log('no App.js: ', loggedUser)}
           <Routes>
             <Route path="/"
               element={<SignIn />} />
@@ -35,7 +34,6 @@ export default function App() {
             <Route path="/cadastro"
               element={<SignUp />} />
 
-            {console.log('App, habitsContext: ', userHabits)}
             <Route path="/hoje"
               element={<Today />}
             />

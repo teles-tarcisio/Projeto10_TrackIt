@@ -44,7 +44,7 @@ export default function Habits() {
   useEffect( () => {
     const config = {
       headers: {
-        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM3NCwiaWF0IjoxNjQxNzU0OTc3fQ.Gp0BwiBEGaEt_i1Ljsode1CTxL7E8-e49Ip8cn5RvUw"
+        Authorization: `Bearer ${localStorage.getItem("userToken")}`
       }
     };
     const habitsPromise = axios.get(HABITS_URL, config);

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BsFillCheckSquareFill } from "react-icons/bs";
 
 const SCTodayTopBar = styled.div`
   height: 51px;
@@ -56,8 +57,7 @@ const SCCheckButton = styled.button`
   font-size: 69px;
   background: none;
   border: none;
-  color: #8FC549;
+  color: ${props => props.done ? '#8FC549' : '#EBEBEB'};
 `;
-
 
 export { SCTodayTopBar, SCTodayHabits, SCTodayHabitCard, SCCheckButton };

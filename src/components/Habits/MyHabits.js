@@ -29,8 +29,7 @@ export default function MyHabits({ habitsArray }) {
               <p>{habit.name}</p>
               <SCWeekButtons>
                 {weekDays.map((day, index) => (
-                  <SCWeekdayButton
-                    name={index}>
+                  <SCWeekdayButton name={index} >
                     {day}
                   </SCWeekdayButton>))}
               </SCWeekButtons>
