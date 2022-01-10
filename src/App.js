@@ -5,7 +5,7 @@ import { LoggedUserContext, HabitsContext } from './contexts/contexts.js';
 
 import SignIn from './components/SignUser/SignIn.js';
 import SignUp from './components/SignUser/SignUp.js';
-//import Today from './components/Habits/Today.js';
+import Today from './components/Habits/Today.js';
 import Habits from './components/Habits/Habits.js';
 
 
@@ -37,7 +37,7 @@ export default function App() {
 
             {console.log('App, habitsContext: ', userHabits)}
             <Route path="/hoje"
-              //element={<Today />}
+              element={<Today />}
             />
             <Route path="/habitos"
               element={<Habits />} />
