@@ -60,9 +60,8 @@ export default function Today() {
   return (
     <>
       <Header image={loggedUser.image} />
-
-        <HabitsToday habitsArray={todayHabits} setHabitsArray={setTodayHabits}/>
-        {console.log(todayHabits)}
+      
+      <HabitsToday habitsArray={todayHabits} setHabitsArray={setTodayHabits}/>
 
       <Footer />
     </>

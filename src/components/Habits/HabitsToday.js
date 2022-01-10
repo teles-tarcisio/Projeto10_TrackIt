@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from "react";
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
@@ -8,11 +9,22 @@ import { SCTodayTopBar, SCTodayHabits, SCTodayHabitCard, SCCheckButton } from ".
 
 import { BsFillCheckSquareFill } from "react-icons/bs";
 
+const HABITS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+
+// /ID_DO_HABITO/check
 
 export default function HabitsToday({ habitsArray, setHabitsArray }) {
 
   function toggleDone(event) {
-    console.log(event.target.id);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("userToken")}`
+      }
+    };
+    const habitID = event.target.id;
+    const donePromise = axios.post(HABITS_URL + `/${habitID}/check`, {}, config);
+    donePromise.then(console.log);
+    donePromise.catch(console.log);
   }
 
   return (
@@ -31,7 +43,6 @@ export default function HabitsToday({ habitsArray, setHabitsArray }) {
             <h1>{habit.name}</h1>
             <p>Sequência atual: {habit.currentSequence} dias</p>
             <p>Seu recorde: {habit.highestSequence} dias</p>
-            <p>{habit.id}</p>
             <SCCheckButton done={habit.done} >
               <BsFillCheckSquareFill />
             </SCCheckButton>

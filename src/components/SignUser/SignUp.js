@@ -25,7 +25,7 @@ export default function SignUp() {
       navigate('/');
     });
     signUpPromise.catch(error => {
-      alert("Erro ao efetuar cadastro, VERIFICAR!");
+      alert("Erro ao efetuar cadastro");
       console.log('erro signup: ', error.response);
     });
   }
