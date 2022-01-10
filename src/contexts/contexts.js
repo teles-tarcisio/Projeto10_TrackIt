@@ -2,4 +2,6 @@ import { createContext } from "react";
 
 const LoggedUserContext = createContext();
 
-export { LoggedUserContext };
+const HabitsContext = createContext();
+
+export { LoggedUserContext, HabitsContext };

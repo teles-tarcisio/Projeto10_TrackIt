@@ -55,11 +55,11 @@ const SCSimpleButton = styled.button`
   & h1 {    
     font-size: 27px;
     line-height: 34px;
-    color: #FFFFFF;
+    color: ${props => props.whiteFont ? '#FFFFFF' : '#52B6FF'};
   }
   border: none;
   border-radius: 5px;
-  background-color: #52B6FF;
+  background-color: ${props => props.blueButton ? '#52B6FF' : '#FFFFFF'};
 `;
 
 const SCHabitsList = styled.ul`
@@ -143,23 +143,28 @@ const SCWeekButtons = styled.div`
 const SCWeekdayButton = styled.button`
   width: 30px;
   height: 30px;
-  border: 1px solid #D4D4D4;
+  border: 1px solid ${props => props.selected ? '#CFCFCF' : '#D4D4D4'};
   border-radius: 5px;
   margin-right: 4px;
-  background-color: #FFFFFF;
+  background-color: ${props => props.selected ? '#CFCFCF' : '#FFFFFF'};
   font-size: 20px;
   line-height: 25px;
-  color: #DBDBDB;
+  color: ${props => props.selected ? '#FFFFFF' : '#DBDBDB'};
 `;
 
 const SCActionButtons = styled.div`
   margin-left: auto;
+  display: flex;
   & button {
     width: 84px;
+    height: 35px;
     border: none;
+  }
+  & h1 {
     font-size: 16px;
     line-height: 20px;
   }
+  
 `;
 
 export { SCHeader, SCFooter, SCRoundProgressBar, SCHabitsList, SCMainContainer, SCHabitsTopBar, SCSimpleButton, SCHabitCard, SCNewHabitCard, SCHabitName, SCWeekButtons, SCWeekdayButton, SCActionButtons };
