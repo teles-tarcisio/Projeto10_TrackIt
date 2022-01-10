@@ -1,11 +1,14 @@
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { LoggedUserContext, HabitsContext } from '../../contexts/contexts.js';
 
 import { SCHeader, SCFooter, SCRoundProgressBar } from './Habits_styles.js';
 
 import MyHabits from './MyHabits.js';
+
+const HABITS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
 function Header({ image }) {
   return (
@@ -34,47 +37,25 @@ function Footer() {
   );
 }
 
-
-let tempUserHabits = [
-  {
-    id: 8218,
-    name: "Hábito 01",
-    days: [1,3,5]
-  },
-  {
-    id: 8219,
-    name: "Hábito 02",
-    days: [5,0,6]
-  },
-  {
-    id: 8222,
-    name: "hábito 05",
-    days: [0,1,2,3,4,5,6]
-  },
-  {
-    id: 9090,
-    name: "hábito 05",
-    days: [0,1,2,3,4,5,6]
-  },
-  {
-    id: 8221,
-    name: "Hábito 03",
-    days: []
-  }
-];
-
 export default function Habits() {
   const { loggedUser} = useContext(LoggedUserContext);
   const { userHabits, setUserHabits } = useContext(HabitsContext);
 
-  tempUserHabits = [];
-  
-  
+  useEffect( () => {
+    const config = {
+      headers: {
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM3NCwiaWF0IjoxNjQxNzU0OTc3fQ.Gp0BwiBEGaEt_i1Ljsode1CTxL7E8-e49Ip8cn5RvUw"
+      }
+    };
+    const habitsPromise = axios.get(HABITS_URL, config);
+    habitsPromise.then(response => setUserHabits(response.data));
+  }, []);
+    
   return (
     <>
       <Header image={loggedUser.image} />
 
-      <MyHabits habitsArray={tempUserHabits}/>
+      <MyHabits habitsArray={userHabits}/>
 
       <Footer />
     </>

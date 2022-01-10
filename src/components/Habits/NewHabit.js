@@ -1,19 +1,56 @@
+import axios from 'axios';
 import React, { useState } from "react";
 import { SCNewHabitCard, SCHabitName, SCWeekButtons, SCWeekdayButton, SCActionButtons, SCSimpleButton } from "./Habits_styles.js";
 
+const HABITS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
-export default function NewHabit({hidden}) {
+export default function NewHabit({ hidden }) {
   const [newHabit, setNewHabit] = useState({ name: "", days: [] });
 
-  const weekButtonsArray = [
+  const [frequencyArray, setFrequencyArray] = useState([
     { weekDay: 'D', selected: false },
-    { weekDay: 'S', selected: true },
+    { weekDay: 'S', selected: false },
     { weekDay: 'T', selected: false },
     { weekDay: 'Q', selected: false },
-    { weekDay: 'Q', selected: true },
+    { weekDay: 'Q', selected: false },
     { weekDay: 'S', selected: false },
     { weekDay: 'S', selected: false }
-  ];
+  ]);
+
+  function updateFrequency(event) {
+    let auxArray = [...frequencyArray];
+    let auxIndex = event.target.name;
+    auxArray[auxIndex].selected = !auxArray[auxIndex].selected;
+    setFrequencyArray(auxArray);
+  }
+
+  function sendNewhabit() {
+    if (newHabit.name.trim() === "") {
+      alert("Por favor preencha nome do hábito");
+      return;
+    }
+    else {
+      const testDays = [];
+      frequencyArray.forEach((element, index) => {
+        if (element.selected) {
+          testDays.push(index)
+        };
+      }
+      );
+      setNewHabit({ ...newHabit, days: testDays });
+
+      const config = {
+        headers: {
+          Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM3NCwiaWF0IjoxNjQxNzU0OTc3fQ.Gp0BwiBEGaEt_i1Ljsode1CTxL7E8-e49Ip8cn5RvUw"
+        }
+      };
+      const newHabitPromise = axios.post(HABITS_URL, newHabit, config);
+      newHabitPromise.then(console.log);
+      newHabitPromise.catch(console.log);
+    }
+  }
+  
+
 
   return (
     <SCNewHabitCard>
@@ -24,10 +61,10 @@ export default function NewHabit({hidden}) {
         onChange={(e) => setNewHabit({ ...newHabit, name: e.target.value })}
       />
       <SCWeekButtons>
-        {weekButtonsArray.map((day, index) => (
+        {frequencyArray.map((day, index) => (
           <SCWeekdayButton
             name={index} selected={day.selected}
-            onClick={(e) => console.log(e.target.name)}>
+            onClick={updateFrequency}>
             {day.weekDay}
           </SCWeekdayButton>))}
       </SCWeekButtons>
@@ -36,13 +73,13 @@ export default function NewHabit({hidden}) {
         <SCSimpleButton
           whiteFont={false}
           onClick={() => hidden(false)}>
-            <h1>Cancelar</h1>
+          <h1>Cancelar</h1>
         </SCSimpleButton>
         <SCSimpleButton
           whiteFont={true}
           blueButton={true}
-          onClick={() => console.log("salvar")}>
-            <h1>Salvar</h1>
+          onClick={sendNewhabit}>
+          <h1>Salvar</h1>
         </SCSimpleButton>
       </SCActionButtons>
 
