@@ -1,15 +1,12 @@
-import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
 
 import { LoggedUserContext } from '../../contexts/contexts.js';
+import { authenticateUser } from '../../services/APITrackIt.js';
 
 import TrackItLogo from '../../assets/imgs/TrackIt_logo.png';
 
 import { SCLogo, SCContainer, SCLogin, SCInput, SCWideButton, SCButton } from './SignUser_styles.js';
-
-const SIGNIN_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
-
 
 export default function SignIn() {
   const { loggedUser, setLoggedUser } = useContext(LoggedUserContext);
@@ -19,8 +16,9 @@ export default function SignIn() {
   function signInUser(event) {
     event.preventDefault();
 
-    const signInPromise = axios.post(SIGNIN_URL, localData);
-    signInPromise.then(response => {
+    const loginPromise = authenticateUser(localData);
+    loginPromise.then( response => {
+      console.log('api response :', response.data);
       setLoggedUser({ ...loggedUser,
         id: response.data.id,
         name: response.data.name,
@@ -31,7 +29,7 @@ export default function SignIn() {
       localStorage.setItem("userToken", response.data.token);
       navigate('/hoje');
     });
-    signInPromise.catch(error => {
+    loginPromise.catch(error => {
       alert(`${error.response.data.message}\nVerifique os dados preenchidos`);
     });
   }

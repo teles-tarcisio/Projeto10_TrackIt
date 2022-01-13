@@ -3,12 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
 
 import { LoggedUserContext } from '../../contexts/contexts.js';
+import { registerNewUser } from '../../services/APITrackIt.js';
 
 import TrackItLogo from '../../assets/imgs/TrackIt_logo.png';
 import { SCLogo, SCContainer, SCLogin, SCInput, SCWideButton, SCButton } from './SignUser_styles.js';
-
-const SIGNUP_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up";
-
 
 export default function SignUp() {
   const { loggedUser, setLoggedUser } = useContext(LoggedUserContext);
@@ -18,15 +16,15 @@ export default function SignUp() {
   function signUpUser(event) {
     event.preventDefault();
 
-    const signUpPromise = axios.post(SIGNUP_URL, localData);
+    const signUpPromise = registerNewUser(localData);
     signUpPromise.then( response => {
       setLoggedUser({...loggedUser, id:response.data.id, name:response.data.name, email:response.data.email});
       alert('Cadastro efetuado com sucesso! Por favor faça login');
       navigate('/');
     });
     signUpPromise.catch(error => {
-      alert("Erro ao efetuar cadastro");
-      console.log('erro signup: ', error.response);
+      alert(`Erro ao efetuar cadastro:
+      \n ${error.response.data.message}`);
     });
   }
 

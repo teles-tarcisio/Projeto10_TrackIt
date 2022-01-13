@@ -1,20 +1,18 @@
 import axios from 'axios';
-import React from "react";
+import React, { useState, useEffect } from "react";
 import dayjs from 'dayjs';
 import 'dayjs/locale/pt-br';
 
 
-import { SCMainContainer } from "./Habits_styles.js";
+import { SCMainContainer } from "../Habits/Habits_styles.js";
 import { SCTodayTopBar, SCTodayHabits, SCTodayHabitCard, SCCheckButton } from "./Today_styles.js";
 
 import { BsFillCheckSquareFill } from "react-icons/bs";
 
 const HABITS_URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
 
-// /ID_DO_HABITO/check
-
-export default function HabitsToday({ habitsArray, setHabitsArray }) {
-
+export default function HabitsToday() {
+  const [habitsArray, setHabitsArray] = useState([]);
   function toggleDone(event) {
     const config = {
       headers: {
@@ -26,6 +24,18 @@ export default function HabitsToday({ habitsArray, setHabitsArray }) {
     donePromise.then(console.log);
     donePromise.catch(console.log);
   }
+
+  useEffect(() => {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("userToken")}`
+      }
+    };
+    const todayPromise = axios.get(HABITS_URL + '/today', config);
+    todayPromise.then(response =>
+      setHabitsArray(response.data));
+    todayPromise.catch(console.log);
+  }, []);
 
   return (
     <SCMainContainer>
@@ -48,7 +58,7 @@ export default function HabitsToday({ habitsArray, setHabitsArray }) {
             </SCCheckButton>
           </SCTodayHabitCard>
         ))
-      }
+        }
       </SCTodayHabits>
     </SCMainContainer >
   );
