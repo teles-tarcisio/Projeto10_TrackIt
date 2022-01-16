@@ -1,12 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState, useContext } from 'react';
-import { LoggedUserContext } from '../../contexts/LoggedUserContext.js';
+import React, { useState } from 'react';
 import api from '../../services/apiTrackIt.js';
 import TrackItLogo from '../../assets/imgs/TrackIt_logo.png';
 import { Logo, Container, LoginForm, Input, WideButton, Button } from '../../components/SignUser/SignUser_styles.js';
 
 export default function SignUp() {
-  const { loggedUser, setLoggedUser } = useContext(LoggedUserContext);
   const [localFormData, setLocalFormData] = useState({ email: '', name: '', image: '', password: '' });
   const navigate = useNavigate();
 
