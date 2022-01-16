@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SCContainer = styled.div`
+const Container = styled.div`
   width: 100vw;
   height: 100vh;
   margin: auto;
@@ -11,13 +11,13 @@ const SCContainer = styled.div`
   background-color: #FFFFFF;
 `;
 
-const SCLogo = styled.img`
+const Logo = styled.img`
   margin: 68px auto 32px auto;
   width: 180px;
   height: 180px;
 ` ;
 
-const SCLogin = styled.form`
+const LoginForm = styled.form`
   width: 303px;
   height: 90%;
   margin: 0 auto auto auto;
@@ -25,7 +25,7 @@ const SCLogin = styled.form`
   flex-direction: column;
 `;
 
-const SCInput = styled.input`
+const Input = styled.input`
   width: 100%;
   height: 45px;
   margin: 3px auto;
@@ -36,7 +36,7 @@ const SCInput = styled.input`
   border-radius: 5px;
 `;
 
-const SCWideButton = styled.div`
+const WideButton = styled.div`
   width: 100%;
   height: 45px;
   margin: 3px auto;
@@ -53,7 +53,7 @@ const SCWideButton = styled.div`
   }
 `;
 
-const SCButton = styled.button`
+const Button = styled.button`
   width: 100%;
   display: flex;
   align-items: center;
@@ -65,4 +65,4 @@ const SCButton = styled.button`
   border: none;
 `;
 
-export { SCContainer, SCLogo, SCLogin, SCInput, SCWideButton, SCButton };
+export { Container, Logo, LoginForm, Input, WideButton, Button };

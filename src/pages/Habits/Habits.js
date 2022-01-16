@@ -2,7 +2,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import React, { useContext, useEffect } from 'react';
 
-import { LoggedUserContext, HabitsContext } from '../../contexts/contexts.js';
+import { LoggedUserContext } from '../../contexts/LoggedUserContext.js';
+import { HabitsContext } from '../../contexts/HabitsContext.js';
 
 import { SCHeader, SCFooter, SCRoundProgressBar } from './Habits_styles.js';
 

@@ -35,7 +35,6 @@ export default function MyHabits({ habitsArray }) {
               </SCWeekButtons>
             </SCHabitCard>))
         }
-
       </SCHabitsList>
     </SCMainContainer>
   );
